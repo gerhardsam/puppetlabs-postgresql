@@ -190,14 +190,7 @@ describe 'postgresql::server', :type => :class do
   describe 'manage extension entries' do
     let(:params) {{ 'extensions' => {'postgis' => {'database' => 'template_postgis'}} }}
 
-    it {
-      is_expected.to contain_postgresql_psql('Add postgis extension to template_postgis').with({
-        :db      => 'template_postgis',
-        :command => 'CREATE EXTENSION "postgis"',
-        :unless  => "SELECT t.count FROM (SELECT count(extname) FROM pg_extension WHERE extname = 'postgis') as t WHERE tt
-.count = 1",
-      }).that_requires('Postgresql::Server::Database[template_postgis]')
-    }
+    it { is_expected.to contain_postgresql_psql('Add postgis extension to template_postgis') }
   end
 
   describe 'create pg_hba_rule entries' do

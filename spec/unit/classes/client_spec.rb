@@ -16,16 +16,16 @@ describe 'postgresql::client', :type => :class do
         :package_ensure       => 'absent',
         :package_name         => 'mypackage',
         :file_ensure          => 'file',
-        :validate_connections => { 'test' => {
-                                               :database_host => 'test',
-                                               :database_name => 'test',
-                                               :database_password => 'test',
-                                               :database_username => 'test',
-                                               :database_port => 5432,
-                                               :run_as => 'postgresq',
-                                               :sleep => 4,
-                                               :tries => 30,
-                                             } }
+        :validate_connections => { :test => {
+                                              :database_host => 'test',
+                                              :database_name => 'test',
+                                              :database_password => 'test',
+                                              :database_username => 'test',
+                                              :database_port => 5432,
+                                              :run_as => 'postgresq',
+                                              :sleep => 4,
+                                              :tries => 30,
+                                            } }
       }
     end
 
@@ -44,10 +44,10 @@ describe 'postgresql::client', :type => :class do
         :group  => 0,
         :mode   => '0755'
       })
+    end
 
     it { is_expected.to contain_postgresql__validate_db_connection('test') }
 
-    end
   end
 
   describe 'with no parameters' do
