@@ -16,15 +16,15 @@ describe 'postgresql::client', :type => :class do
         :package_ensure       => 'absent',
         :package_name         => 'mypackage',
         :file_ensure          => 'file',
-        :validate_connections => { :test => {
-                                              :database_host => 'test',
-                                              :database_name => 'test',
-                                              :database_password => 'test',
-                                              :database_username => 'test',
-                                              :database_port => 5432,
-                                              :run_as => 'postgresq',
-                                              :sleep => 4,
-                                              :tries => 30,
+        :validate_connections => { 'test' => {
+                                              'database_host' => 'test',
+                                              'database_name' => 'test',
+                                              'database_password' => 'test',
+                                              'database_username' => 'test',
+                                              'database_port' => 5432,
+                                              'run_as' => 'postgresq',
+                                              'sleep' => 4,
+                                              'tries' => 30,
                                             } }
       }
     end
